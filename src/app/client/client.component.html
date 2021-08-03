@@ -1,0 +1,152 @@
+<app-header></app-header>
+<div class="pc-container">
+  <div class="pcoded-content">
+    <!-- [ breadcrumb ] start -->
+    <div class="page-header">
+      <div class="page-block">
+        <div class="row align-items-center">
+          <div class="col-md-12">
+            <div class="page-header-title">
+              <h5 class="m-b-10">User Profile</h5>
+            </div>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+              <li class="breadcrumb-item"><a href="#!">Client</a></li>
+              <li class="breadcrumb-item">{{this.object.name}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- [ breadcrumb ] end -->
+    <!-- [ Main Content ] start -->
+    <div class="row">
+      <!-- [ sample-page ] start -->
+      <div class="col-lg-4">
+        <div class="card user-card user-card-1">
+          <div class="card-body pb-0">
+            <div class="float-end">
+              <span class="badge bg-light-danger">Client</span>
+            </div>
+            <div class="media user-about-block align-items-center mt-0 mb-3">
+              <div class="position-relative d-inline-block">
+                <img class="img-radius img-fluid wid-80" src="./../../assets/logo_client/{{this.object.logo}}" alt="User image">
+              </div>
+              <div class="media-body ms-3">
+                <h6 class="mb-1">{{this.object.name}}</h6>
+                <!-- <p class="mb-0 text-muted">Erich Mcbride</p> -->
+              </div>
+            </div>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <span class="f-w-500"><i class="feather icon-phone-call m-r-10"></i>Téléphone</span>
+              <a class="float-end text-body">{{this.object.phone}}</a>
+            </li>
+
+            <li class="list-group-item">
+              <span class="f-w-500"><i class="feather icon-mail m-r-10"></i>Email</span>
+              <a href="mailto:demo@sample" class="float-end text-body">{{this.object.email}}</a>
+            </li>
+
+            <li class="list-group-item border-bottom-0">
+              <span class="f-w-500"><i class="feather icon-map-pin m-r-10"></i>Emplacement</span>
+              <span class="float-end">{{this.object.address}}</span>
+            </li>
+
+            <li class="list-group-item border-bottom-0">
+              <span class="f-w-500"><i class="feather icon-facebook m-r-10"></i>Facebook</span>
+              <span class="float-end"> <button type="button" class="btn btn-outline-secondary" (click)="opentab('1')"><i
+                    class="feather icon-arrow-right-circle m-r-10"></i> Visitez</button>
+              </span>
+            </li>
+            <li class="list-group-item border-bottom-0">
+              <span class="f-w-500"><i class="feather icon-twitter m-r-10" ></i>Twitter</span>
+              <span class="float-end"> <button type="button" class="btn btn-outline-secondary" (click)="opentab('2')"><i
+                    class="feather icon-arrow-right-circle m-r-10"></i>Visitez</button>
+              </span>
+            </li>
+            <li class="list-group-item border-bottom-0">
+              <span class="f-w-500"><i class="feather icon-linkedin m-r-10"></i>Google Plus</span>
+              <span class="float-end"> <button type="button" class="btn btn-outline-secondary" (click)="opentab('3')"><i
+                    class="feather icon-arrow-right-circle m-r-10"></i>Visitez</button>
+              </span>
+            </li>
+            <!-- <span class="iconify" data-icon="feather-linkedin" data-inline="false"></span> -->
+            <li class="list-group-item border-bottom-0">
+              <span class="f-w-500"><i class="feather icon-linkedin m-r-10"></i>Linkedin</span>
+              <span class="float-end"> <button type="button" class="btn btn-outline-secondary" (click)="opentab('4')"><i
+                    class="feather icon-arrow-right-circle m-r-10"></i>Visitez</button>
+              </span>
+            </li>
+          </ul>
+
+        </div>
+
+      </div>
+
+      <div class="col-lg-8">
+        <div class="tab-content" id="user-set-tabContent">
+          <div class="tab-pane fade show active" id="user-set-profile" role="tabpanel"
+            aria-labelledby="user-set-profile-tab">
+
+            <div class="card">
+              <div class="card-header">
+                <h5><i data-feather="file-text" class="icon-svg-primary wid-20"></i><span class="p-l-5">Contrats</span>
+                </h5>
+              </div>
+              <div class="card-body">
+
+                <table id="report-table" class="table table-bordered mb-0">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>date d'expiration</th>
+                      <th>état</th>
+                      <th>Options</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>26/06/2021</td>
+                      <td>26/06/2022</td>
+                      <td><span class="badge rounded-pill bg-light-success">Actif</span></td>
+                      <td>
+                        <a routerLink='/view-contrat' class="btn btn-success btn-sm m-r-10"><i
+                            class="feather icon-eye"></i>&nbsp;Voir </a>
+                        <a href="#!" class="btn btn-info btn-sm m-r-10"><i class="feather icon-edit"></i>&nbsp;Éditer
+                        </a>
+                        <a href="#!" class="btn btn-warning btn-sm m-r-10"><i
+                            class="feather icon-printer"></i>&nbsp;Imprimer </a>
+                        <a href="#!" class="btn btn-danger btn-sm m-r-10"><i
+                            class="feather icon-trash-2"></i>&nbsp;Effacer </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>22/01/2020</td>
+                      <td>22/01/2021</td>
+                      <td><span class="badge rounded-pill bg-light-danger">Inactif</span></td>
+                      <td>
+                        <a routerLink='/view-contrat' class="btn btn-success btn-sm m-r-10"><i
+                            class="feather icon-eye"></i>&nbsp;Voir </a>
+                        <a href="#!" class="btn btn-info btn-sm m-r-10"><i class="feather icon-edit"></i>&nbsp;Éditer
+                        </a>
+                        <a href="#!" class="btn btn-warning btn-sm m-r-10"><i
+                            class="feather icon-printer"></i>&nbsp;Imprimer </a>
+                        <a href="#!" class="btn btn-danger btn-sm m-r-10"><i
+                            class="feather icon-trash-2"></i>&nbsp;Effacer </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- [ sample-page ] end -->
+    </div>
+    <!-- [ Main Content ] end -->
+  </div>
+</div>

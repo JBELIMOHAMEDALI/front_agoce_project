@@ -1,0 +1,39 @@
+<div class="auth-wrapper">
+  <div class="auth-content">
+    <div class="card">
+      <div class="row align-items-center text-center">
+        <div class="col-md-12">
+          <div class="card-body">
+            <form class="form" name="form" #f="ngForm" (ngSubmit)="this.onSignin(f)">
+
+            <img src="assets/images/logo + slegon-1.png" alt="" class="img-fluid mb-4">
+            <div class="input-group mb-3">
+              <span class="input-group-text"><i data-feather="mail"></i></span>
+              <input type="email" class="form-control" placeholder="Adresse e-mail" 
+              name="email"
+              #email="ngModel" ngModel required email
+              >
+            </div>
+            <div *ngIf="(email.invalid && email.touched)" class="alert alert-danger" role="alert">
+              email est invalide
+            </div>
+            <div class="input-group mb-4">
+              <span class="input-group-text"><i data-feather="lock"></i></span>
+              <input type="password" class="form-control" placeholder="Mot de passe"
+              name="pass"
+              #pass="ngModel" ngModel
+              required
+              >
+            </div>
+            <div *ngIf="(pass.invalid && pass.touched)" class="alert alert-danger" role="alert">
+              Mot de passe  invalide
+            </div>
+            <button type="submit" class="btn btn-block btn-primary mb-4" [disabled]="f.invalid" >S'identifier</button>
+            <!-- routerLink='dashboard' -->
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

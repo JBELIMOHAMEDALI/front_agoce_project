@@ -1,0 +1,427 @@
+<app-header></app-header>
+
+<!-- [ Main Content ] start -->
+<div class="pc-container">
+  <div class="pcoded-content">
+    <!-- [ breadcrumb ] start -->
+    <div class="page-header">
+      <div class="page-block">
+        <div class="row align-items-center">
+          <div class="col-md-12">
+            <div class="page-header-title">
+              <h5 class="m-b-10">Multicom</h5>
+            </div>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item">Home</li>
+              <li class="breadcrumb-item">Contrats</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- [ breadcrumb ] end -->
+    <!-- [ Main Content ] start -->
+    <div class="row">
+      <!-- customar project  start -->
+      <div class="col-xl-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="row align-items-center m-l-0">
+              <div class="col-sm-6">
+              </div>
+              <div class="col-sm-6 text-end">
+                <button class="btn btn-success btn-sm mb-3 btn-round" data-bs-toggle="modal"
+                  data-bs-target="#modal-report"><i class="feather icon-user-plus"></i> Ajouter Contrat</button>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table id="report-table" class="table table-bordered table-striped mb-0" style="text-align: center;">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Client</th>
+                    <th>cin</th>
+                    <th>Société</th>
+                    <th>Email</th>
+                    <th>Téléphone</th>
+                    <th>Options</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let item of this.listContrint ">
+                  <tr>
+                    <td>{{item.date_travail}}</td>
+                    <td>{{item.nom}}</td>
+                    <td>{{item.cin}}</td>
+                    <td>{{item.soc}}</td>
+                    <td>{{item.mail}}</td>
+                    <td>{{item.tel}}</td>
+                    <td>
+                      <a routerLink='/view-contrat' class="btn btn-success btn-sm m-r-10"><i class="feather icon-eye"></i>&nbsp;Voir </a>
+                      <a href="#!" class="btn btn-info btn-sm m-r-10" data-bs-toggle="modal" data-bs-target="#modal-report1" (click)="getObject(item)"><i class="feather icon-edit"></i>&nbsp;Éditer </a>
+                      <a href="#!" class="btn btn-warning btn-sm m-r-10"><i class="feather icon-printer"></i>&nbsp;Imprimer </a>
+                      <a  class="btn btn-danger btn-sm m-r-10" data-bs-toggle="modal" data-bs-target="#modal-report2" (click)="setIdClientDeleted(item.id)"><i class="feather icon-trash-2" ></i>&nbsp;Effacer </a>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- customar project  end -->
+    </div>
+    <!-- [ Main Content ] end -->
+  </div>
+</div>
+<div class="modal fade" id="modal-report" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Contrats</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form" name="form" #f="ngForm" (ngSubmit)="this.addContra(f)">
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Name">Name</label>
+                <input type="text" class="form-control" id="Name" placeholder="" name="nom" #nom="ngModel" ngModel required>
+                <div *ngIf="(nom.invalid && nom.touched)" class="alert alert-danger" role="alert">
+                  Name  invalide
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Name">Société</label>
+                <input type="text" class="form-control" id="Name" placeholder="" name="soc" #soc="ngModel" ngModel required>
+                <div *ngIf="(soc.invalid && soc.touched)" class="alert alert-danger" role="alert">
+                  Société  invalide
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Name">Cin</label>
+                <input type="text" class="form-control" id="Name" placeholder="" name="cin" #cin="ngModel" ngModel required>
+                <div *ngIf="(cin.invalid && cin.touched)" class="alert alert-danger" role="alert">
+                  Cin  invalide
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Phone">Phone</label>
+                <input type="text" class="form-control" id="Phone" placeholder="" name="tel" #tel="ngModel" ngModel required>
+                <div *ngIf="(tel.invalid && tel.touched)" class="alert alert-danger" role="alert">
+                  Phon  invalide
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group fill">
+                <label class="form-label" for="Email">Email</label>
+                <input type="email" class="form-control" id="Email" placeholder="" name="email" #email="ngModel" ngModel email required>
+                <div *ngIf="(email.invalid && email.touched)" class="alert alert-danger" role="alert">
+                  Email  invalide
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Phone">Objet</label>
+                <input type="text" class="form-control" id="Phone" placeholder="" name="objet" #objet="ngModel" ngModel required>
+                <div *ngIf="(objet.invalid && objet.touched)" class="alert alert-danger" role="alert">
+                  Objet  invalide
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Phone">Date Travail</label>
+                <input class="form-control" type="date" id="datedeb" name="date_travail" #date_travail="ngModel" ngModel required />
+                <div *ngIf="(date_travail.invalid && date_travail.touched)" class="alert alert-danger" role="alert">
+                  date travail  invalide
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Phone">Autre</label>
+                <input type="text" class="form-control" id="Phone" placeholder="" name="autre" #autre="ngModel" ngModel required>
+                <div *ngIf="(autre.invalid && autre.touched)" class="alert alert-danger" role="alert">
+                  Autre invalide
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Phone">Lieu</label>
+                <input type="text" class="form-control" id="Phone" placeholder="" name="liru" #liru="ngModel" ngModel required>
+                <div *ngIf="(liru.invalid && liru.touched)" class="alert alert-danger" role="alert">
+                  Lieu invalide
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Phone">Date Recp</label>
+                <input class="form-control" type="date" id="datedeb" name="date_recp"  #date_recp="ngModel" ngModel required />
+                <div *ngIf="(date_recp.invalid && date_recp.touched)" class="alert alert-danger" role="alert">
+                  Date Recp invalide
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Phone">Lieu Recp	</label>
+                <input type="text" class="form-control" id="Phone" placeholder="" name="lieu_recp" #lieu_recp="ngModel" ngModel required>
+                <div *ngIf="(lieu_recp.invalid && lieu_recp.touched)" class="alert alert-danger" role="alert">
+                  Lieu Recp invalide
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Phone">Prix</label>
+                <input type="text" class="form-control" id="Phone" placeholder="" name="prix" #prix="ngModel" ngModel required>
+                <div *ngIf="(prix.invalid && prix.touched)" class="alert alert-danger" role="alert">
+                 Prix invalide
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Phone">Avance</label>
+                <input type="text" class="form-control" id="Phone" placeholder="" name="avance" #avance="ngModel" ngModel required>
+                <div *ngIf="(avance.invalid && avance.touched)" class="alert alert-danger" role="alert">
+                  Avance invalide
+                 </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Phone">Reste	</label>
+                <input type="text" class="form-control" id="Phone" placeholder="" name="rest" #rest="ngModel" ngModel required>
+                <div *ngIf="(rest.invalid && rest.touched)" class="alert alert-danger" role="alert">
+                  Reste invalide
+                 </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Phone">Date Paiement</label>
+                <input class="form-control" type="date" id="datedeb" name="date_paiement" #date_paiement="ngModel" ngModel required />
+                <div *ngIf="(date_paiement.invalid && date_paiement.touched)" class="alert alert-danger" role="alert">
+                  Date Paiement
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <button type="submit" class="btn btn-primary"  [disabled]="f.invalid">Submit</button>
+              <button class="btn btn-danger"  data-bs-dismiss="modal" aria-label="Close">Close</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- update -->
+
+
+
+<div class="modal fade" id="modal-report1" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update Contrats</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form" name="form" #fn="ngForm" (ngSubmit)="this.updateContra(fn)">
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Name">Name</label>
+                <input type="text" class="form-control" id="Name" placeholder="" name="nom" #nom="ngModel" [(ngModel)]="this.model.nom" required>
+                <div *ngIf="(nom.invalid && nom.touched)" class="alert alert-danger" role="alert">
+                  Name  invalide
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Name">Société</label>
+                <input type="text" class="form-control" id="Name" placeholder="" name="soc" #soc="ngModel" [(ngModel)]="this.model.soc" required>
+                <div *ngIf="(soc.invalid && soc.touched)" class="alert alert-danger" role="alert">
+                  Société  invalide
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Name">Cin</label>
+                <input type="text" class="form-control" id="Name" placeholder="" name="cin" #cin="ngModel" [(ngModel)]="this.model.cin" required>
+                <div *ngIf="(cin.invalid && cin.touched)" class="alert alert-danger" role="alert">
+                  Cin  invalide
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Phone">Phone</label>
+                <input type="text" class="form-control" id="Phone" placeholder="" name="tel" #tel="ngModel" [(ngModel)]="this.model.tel" required>
+                <div *ngIf="(tel.invalid && tel.touched)" class="alert alert-danger" role="alert">
+                  Phon  invalide
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group fill">
+                <label class="form-label" for="Email">Email</label>
+                <input type="email" class="form-control" id="Email" placeholder="" name="email" #email="ngModel" [(ngModel)]="this.model.email" email required>
+                <div *ngIf="(email.invalid && email.touched)" class="alert alert-danger" role="alert">
+                  Email  invalide
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Phone">Objet</label>
+                <input type="text" class="form-control" id="Phone" placeholder="" name="objet" #objet="ngModel" [(ngModel)]="this.model.objet" required>
+                <div *ngIf="(objet.invalid && objet.touched)" class="alert alert-danger" role="alert">
+                  Objet  invalide
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Phone">Date Travail</label>
+                <input class="form-control" type="date" id="datedeb" name="date_travail" #date_travail="ngModel" [(ngModel)]="this.model.date_travail" required />
+                <div *ngIf="(date_travail.invalid && date_travail.touched)" class="alert alert-danger" role="alert">
+                  date travail  invalide
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Phone">Autre</label>
+                <input type="text" class="form-control" id="Phone" placeholder="" name="autre" #autre="ngModel" [(ngModel)]="this.model.autre" required>
+                <div *ngIf="(autre.invalid && autre.touched)" class="alert alert-danger" role="alert">
+                  Autre invalide
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Phone">Lieu</label>
+                <input type="text" class="form-control" id="Phone" placeholder="" name="liru" #liru="ngModel" [(ngModel)]="this.model.liru" required>
+                <div *ngIf="(liru.invalid && liru.touched)" class="alert alert-danger" role="alert">
+                  Lieu invalide
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Phone">Date Recp</label>
+                <input class="form-control" type="date" id="datedeb" name="date_recp"  #date_recp="ngModel" [(ngModel)]="this.model.date_recp" required />
+                <div *ngIf="(date_recp.invalid && date_recp.touched)" class="alert alert-danger" role="alert">
+                  Date Recp invalide
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Phone">Lieu Recp	</label>
+                <input type="text" class="form-control" id="Phone" placeholder="" name="lieu_recp" #lieu_recp="ngModel" [(ngModel)]="this.model.lieu_recp" required>
+                <div *ngIf="(lieu_recp.invalid && lieu_recp.touched)" class="alert alert-danger" role="alert">
+                  Lieu Recp invalide
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Phone">Prix</label>
+                <input type="text" class="form-control" id="Phone" placeholder="" name="prix" #prix="ngModel" [(ngModel)]="this.model.prix" required>
+                <div *ngIf="(prix.invalid && prix.touched)" class="alert alert-danger" role="alert">
+                 Prix invalide
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Phone">Avance</label>
+                <input type="text" class="form-control" id="Phone" placeholder="" name="avance" #avance="ngModel" [(ngModel)]="this.model.avance" required>
+                <div *ngIf="(avance.invalid && avance.touched)" class="alert alert-danger" role="alert">
+                  Avance invalide
+                 </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Phone">Reste	</label>
+                <input type="text" class="form-control" id="Phone" placeholder="" name="rest" #rest="ngModel" [(ngModel)]="this.model.rest" required>
+                <div *ngIf="(rest.invalid && rest.touched)" class="alert alert-danger" role="alert">
+                  Reste invalide
+                 </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="Phone">Date Paiement</label>
+                <input class="form-control" type="date" id="datedeb" name="date_paiement" #date_paiement="ngModel" [(ngModel)]="this.model.date_paiement" required />
+                <div *ngIf="(date_paiement.invalid && date_paiement.touched)" class="alert alert-danger" role="alert">
+                  Date Paiement
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <button type="submit" class="btn btn-primary"  [disabled]="fn.invalid">Submit</button>
+              <button class="btn btn-danger"  data-bs-dismiss="modal" aria-label="Close">Close</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- dellete -->
+
+<div class="modal fade" id="modal-report2" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Supprtion  Client</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="row">
+              vous ete sur du supprimer cette elimont ?
+            
+          </div>
+          <br>
+          <hr>
+        <div class="col-sm-12">
+          <button type="submit" class="btn btn-block btn-primary" (click)="delleteContra()" >Yes</button>
+          <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

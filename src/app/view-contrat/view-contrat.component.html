@@ -1,0 +1,173 @@
+<app-header></app-header>
+
+<div class="pc-container">
+  <div class="pcoded-content">
+    <!-- [ breadcrumb ] start -->
+    <div class="page-header">
+      <div class="page-block">
+        <div class="row align-items-center">
+          <div class="col-md-12">
+            <div class="page-header-title">
+              <h5 class="m-b-10">Invoice</h5>
+            </div>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a>Home</a></li>
+              <li class="breadcrumb-item"><a>Contrat</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- [ breadcrumb ] end -->
+    <!-- [ Main Content ] start -->
+    <div class="row">
+      <!-- [ basic-alert ] start -->
+      <div class="col-md-12">
+        <!-- [ Invoice ] start -->
+        <div class="container">
+          <div>
+            <div class="card" id="printTable">
+              <div class="card-body">
+                <div class="row ">
+                  <h1 class="text-center text-uppercase text-primary">Facture</h1>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="table-responsive">
+                        <table class="table table-responsive invoice-table table-borderless">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <img class="img-fluid" src="assets/images/logo.png" alt="Multicom Logo" width="250">
+                                <p class="m-0 m-t-10">1065 Mandan Road,<br> Columbia MO, Missouri.</p>
+                                <p class="m-0">(+216) - 54 690 513</p>
+                                <p class="m-0 m-t-10"><a class="text-secondary" href="mailto:demo@gmail.com"
+                                    target="_top">demo@gmail.com</a></p>
+                              </td>
+                              <td class="float-end">
+                                <br>
+                                <br>
+                                <h6 class="m-0">Client Information :</h6>
+                                <h6 class="m-0">Josephin Villa</h6>
+                                <p class="m-0 m-t-10">1065 Mandan Road,<br> Columbia MO, Missouri.</p>
+                                <p class="m-0">(+216) - 54 690 513</p>
+                                <p><a class="text-secondary" href="mailto:demo@gmail.com"
+                                    target="_top">demo@gmail.com</a></p>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="table-responsive">
+                        <table class="table table-responsive invoice-table table-borderless">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <h6 class="m-b-20">Order Information :</h6>
+                                <p class="m-0">Date : November 14</p>
+                                <p class="m-0">Status : Pending </p>
+                                <p class="m-0">Id : #146859 </p>
+                              </td>
+                              <td class="float-end">
+                                <h6 class="m-b-20">Invoice Number <span>#125863478945</span></h6>
+                                <h6 class="text-uppercase text-primary">Total Due :
+                                  <span>$950.00</span>
+                                </h6>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="table-responsive">
+                        <table class="table invoice-detail-table">
+                          <thead>
+                            <tr class="thead-default">
+                              <th>Description</th>
+                              <th>Quantity</th>
+                              <th>Amount</th>
+                              <th>Total</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <h6>Logo Design</h6>
+                                <p class="m-0">lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                              </td>
+                              <td>6</td>
+                              <td>$200.00</td>
+                              <td>$1200.00</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <table class="table table-responsive invoice-table invoice-total">
+                        <tbody>
+                          <tr>
+                            <th>Sub Total :</th>
+                            <td>$4725.00</td>
+                          </tr>
+                          <tr>
+                            <th>Taxes (10%) :</th>
+                            <td>$57.00</td>
+                          </tr>
+                          <tr>
+                            <th>Discount (5%) :</th>
+                            <td>$45.00</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <hr />
+                              <h5 class="text-primary m-r-10">Total :</h5>
+                            </td>
+                            <td>
+                              <hr />
+                              <h5 class="text-primary">$ 4827.00</h5>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <h6>Terms and Condition :</h6>
+                      <p>lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row text-center d-print-none">
+                <div class="col-sm-12 invoice-btn-group text-center">
+                  <button type="button" class="btn btn-print-invoice  btn-primary m-b-10"
+                    styleSheetFile="assets/css/style.css" printSectionId="printTable" ngxPrint>Print</button>
+
+                  <button type="button" class="btn  btn-secondary m-b-10 ">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- [ Invoice ] end -->
+        </div>
+        <!-- [ basic-alert ] end -->
+      </div>
+      <!-- [ Main Content ] end -->
+    </div>
+  </div>
