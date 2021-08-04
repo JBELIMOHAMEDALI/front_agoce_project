@@ -15,6 +15,14 @@ import { ViewContratComponent } from './view-contrat/view-contrat.component';
 import { NgxPrintModule } from 'ngx-print';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { TestComponent } from './test/test.component';
+import { AddUpdateClientComponent } from './popup/client/add-update-client/add-update-client.component';
+import { DeleteClientComponent } from './popup/client/delete-client/delete-client.component';
+import { AddUpdateContratComponent } from './popup/contrat/add-update-contrat/add-update-contrat.component';
+import { DeleteContratComponent } from './popup/contrat/delete-contrat/delete-contrat.component';
+import { AddUpdateDevisComponent } from './popup/devis/add-update-devis/add-update-devis.component';
+import { DeleteDevisComponent } from './popup/devis/delete-devis/delete-devis.component';
+import { AddUpdateDevisDetaileComponent } from './popup/devis/add-update-devis-detaile/add-update-devis-detaile.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +35,15 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     ContratsComponent,
     DevisComponent,
     ClientComponent,
-    ViewContratComponent
+    ViewContratComponent,
+    TestComponent,
+    AddUpdateClientComponent,
+    DeleteClientComponent,
+    AddUpdateContratComponent,
+    DeleteContratComponent,
+    AddUpdateDevisComponent,
+    DeleteDevisComponent,
+    AddUpdateDevisDetaileComponent
   ],
   imports: [
     BrowserModule,

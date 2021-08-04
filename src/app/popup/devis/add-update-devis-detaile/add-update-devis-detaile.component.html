@@ -1,0 +1,75 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form class="form" name="form" #f="ngForm" (ngSubmit)="this.MAngDevi(f)">
+
+    <div class="row">
+
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label class="form-label" for="Address">Info</label>
+          <textarea class="form-control" id="Address" rows="3"  name="info" #info="ngModel" [(ngModel)]="this.model.info"  required></textarea>
+          <div *ngIf="(info.invalid && info.touched)" class="alert alert-danger" role="alert">
+            Info  invalide
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label class="form-label" for="Name">QTE</label>
+          <input type="number" class="form-control" id="Name" placeholder="" name="qte" [(ngModel)]="this.model.qte" #qte="ngModel" required>
+          <div *ngIf="(qte.invalid && qte.touched)" class="alert alert-danger" role="alert">
+            Qte  invalide
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label class="form-label" for="Name">Puht</label>
+          <input type="text" class="form-control" id="Name" placeholder="" name="puht" [(ngModel)]="this.model.puht" #puht="ngModel" required>
+          <div *ngIf="(puht.invalid && puht.touched)" class="alert alert-danger" role="alert">
+            Puht  invalide
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label class="form-label" for="Phone">TVA</label>
+          <input type="text" class="form-control" id="Phone"  placeholder="" name="tva" [(ngModel)]="this.model.tva" #tva="ngModel"  required >
+          <div *ngIf="(tva.invalid && tva.touched)" class="alert alert-danger" role="alert">
+            TVA  invalide
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label class="form-label" for="Phone">THT</label>
+          <input type="text" class="form-control" id="Phone"  placeholder="" name="tht" [(ngModel)]="this.model.tht" #tht="ngModel"  required >
+          <div *ngIf="(tht.invalid && tht.touched)" class="alert alert-danger" role="alert">
+            TVA  invalide
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+      </div>
+<div class="modal-footer">
+  <button *ngIf="this.add" type="submit" class="btn btn-block btn-primary"  [disabled]="f.invalid">ADD</button>
+  <button *ngIf="!this.add" type="submit" class="btn btn-block btn-primary"  [disabled]="f.invalid">Update</button>
+  
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>
+</form>
+</div>

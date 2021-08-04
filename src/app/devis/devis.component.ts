@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DevisService } from '../service/devis.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AddUpdateDevisDetaileComponent } from '../popup/devis/add-update-devis-detaile/add-update-devis-detaile.component';
+import { AddUpdateDevisComponent } from '../popup/devis/add-update-devis/add-update-devis.component';
+import { DeviGrondService } from '../service/devi-grond.service';
 import { SheredService } from '../service/shered.service';
 
 @Component({
@@ -10,14 +13,13 @@ import { SheredService } from '../service/shered.service';
 export class DevisComponent implements OnInit {
   listDevis: any[] = [];
 
-  constructor(private deviService:DevisService,private shredService: SheredService,) { }
+  constructor(private deviService:DeviGrondService,private shredService: SheredService,private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getlistDevis();
   }
-
   async getlistDevis() {
-    await this.shredService.getAllfromTab("contrats").subscribe({
+    await this.deviService.getAllDevi().subscribe({
       next: (data) => {
         const donne: any = data;
         const msg = donne.msg;
@@ -30,9 +32,22 @@ export class DevisComponent implements OnInit {
           this.listDevis = [];
         }
       }, error: (err) => {
-
         this.listDevis = [];
       }
     })
+  }
+
+  openAdd()
+  {
+    const modalRef = this.modalService.open(AddUpdateDevisComponent);
+    modalRef.componentInstance.title = 'Add Devis';
+    modalRef.componentInstance.add = true;
+  }
+  openAddDetaile(id:String)
+  {
+    const modalRef = this.modalService.open(AddUpdateDevisDetaileComponent);
+    modalRef.componentInstance.title = 'Add Devi';
+    modalRef.componentInstance.add = true;
+    modalRef.componentInstance.id = id;
   }
 }

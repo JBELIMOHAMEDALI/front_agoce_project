@@ -16,8 +16,8 @@ export class ClientSService {
 
   updateuser(client: any) {
     let param1 = new HttpParams;
-
     param1 = param1.set("name", client.name);
+    param1 = param1.set("nom_soc", client.nom_soc);
     param1 = param1.set("email", client.email);
     param1 = param1.set("phone", client.phone);
     param1 = param1.set("address", client.address);

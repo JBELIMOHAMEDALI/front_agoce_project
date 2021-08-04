@@ -1,0 +1,29 @@
+
+
+  <div class="modal-header">
+    <h4 class="modal-title">{{title}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="form" name="form" #f="ngForm" (ngSubmit)="this.mangdevi(f)">
+      <div class="input-group">
+        <select ngModel={{-1}} name="client" #client="ngModel" class="form-control" required>
+          <option disabled [value]="-1">Séléctionner un Client</option>
+          <ng-container *ngFor="let item of this.client_list">
+            <option [value]="item.id_client ">
+              {{item.nom_soc+"**"+item.name }}
+              </option>
+          </ng-container>
+        </select>
+      </div>
+
+  <div class="modal-footer">
+    <button *ngIf="this.add" type="submit" class="btn btn-block btn-primary"  [disabled]="f.invalid">ADD</button>
+    <button *ngIf="!this.add" type="submit" class="btn btn-block btn-primary"  [disabled]="f.invalid">Update</button>
+    
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+  </div>
+  </form>
+  </div>
