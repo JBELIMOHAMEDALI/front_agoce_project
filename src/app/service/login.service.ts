@@ -11,6 +11,6 @@ export class LoginService {
     let param1 = new HttpParams;
     param1 = param1.set('email', email.toString());
     param1 = param1.set('password', password.toString());
-    return this.httpClient.get("http://127.0.0.1/project_pfe/General/login", { params: param1 });
+    return this.httpClient.get("http://127.0.0.1/p_agonce_api/Generale/login", { params: param1 });
   }
 }

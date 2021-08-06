@@ -17,21 +17,24 @@ export class LoginComponent implements OnInit {
   }
  async onSignin(f:any)
   { //{EmailValidator,pass}
-  //   const { email, pass } = f.value;
-  //  await this.loginservice.getlogin(email, pass).subscribe((data) => {
-  //     const donne: any = data;
-  //     const err = donne.error;
-  //     const mayUser = donne.msg;
-  //     if (!err) {
-  //         const nom_prenom = (donne.msg.nom + " " + donne.msg.prenom).toString();
-  //         localStorage.setItem('id_user', JSON.stringify(donne.msg.id_user));
-  //         localStorage.setItem('nomuser', nom_prenom);
-  //         this.route.navigate(['/dashboard']);
-  //     } else {
-  //       swal('warning', 'Vérifier votre Émail et/ou votre mot de passe', 'warning')
-  //     }
-  //   });
-  this.route.navigate(['/dashboard']);
+    const { email, pass } = f.value;
+
+    await this.loginservice.getlogin(email, pass).subscribe({next:(data)=>{
+      const donne: any = data;
+    const err = donne.erorer;
+    const mayUser = donne.msg;
+    if (!err) {
+        const nom_prenom = (donne.msg.nom + " " + donne.msg.prenom).toString();
+        localStorage.setItem('id_user', JSON.stringify(donne.msg.id_user));
+        this.route.navigate(['/dashboard']);
+    } else {
+      swal('warning', 'Vérifier votre Émail et/ou votre mot de passe', 'warning')
+    }
+    },error:(err)=>{
+      swal('warning', 'Vérifier votre Émail et/ou votre mot de passe', 'warning')
+
+    }})
+
 
   }
 }
