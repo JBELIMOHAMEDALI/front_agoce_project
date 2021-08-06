@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-contrat.component.css']
 })
 export class ViewContratComponent implements OnInit {
-
+titre:string ="Facture"//Devis
   constructor() { }
 
   ngOnInit(): void {

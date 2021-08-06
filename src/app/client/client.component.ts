@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ContratsService } from '../service/contrats.service';
 import { SheredService } from '../service/shered.service';
 
 @Component({
@@ -10,13 +11,16 @@ import { SheredService } from '../service/shered.service';
 export class ClientComponent implements OnInit {
 active_id:any="-1";
 object:any;
-  constructor(private route: ActivatedRoute
+listContra:any[]=[];
+  constructor(private route: ActivatedRoute,
+    private contactService:ContratsService
               ,private shredService: SheredService) {
     const id:any = this.route.snapshot.paramMap.get('id_client')?.toString();
-    this.active_id=id.toString();  
+    this.active_id=id.toString();
   }
   ngOnInit(): void {
     this.getInfoClient()
+    this.getListContra();
   }
 async getInfoClient()
 {
@@ -34,6 +38,24 @@ await this.shredService.getOneFromTab("client",this.active_id,"id_client").subsc
   },
   error:(err)=>{
     this.object = [];
+  }})
+}
+
+async getListContra()
+{
+await this.contactService.getAllContrantByClient(this.active_id).subscribe(
+  {next:(data)=>{
+    const donne: any = data;
+    const msg = donne.msg;
+    const error = donne.errorer;
+    if (!error) {
+      this.listContra = msg;
+    } else {
+      this.object = [];
+    }
+  },
+  error:(err)=>{
+    this.listContra = [];
   }})
 }
 

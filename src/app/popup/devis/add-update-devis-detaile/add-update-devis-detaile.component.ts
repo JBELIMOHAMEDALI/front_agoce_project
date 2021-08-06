@@ -32,9 +32,11 @@ export class AddUpdateDevisDetaileComponent implements OnInit {
     }
   }
   async MAngDevi(f: any) {
-    const { info, qte, puht, tva, tht } = f.value;
+    const { info, qte, puht, tva } = f.value;
+    const aux=Number(qte*puht)+((Number(qte*puht)*Number(tva))/100);
+    const tht=aux.toString();
     if (this.add) {
-      const devis = new Devis(info, qte, puht, tva, tht, this.id)
+      const devis = new Devis(info, qte, puht, tva,tht, this.id)
       await this.servuceDevis.addDevis(devis).subscribe({
         next: (data) => {
           const donne: any = data;
@@ -56,7 +58,7 @@ export class AddUpdateDevisDetaileComponent implements OnInit {
       })
     }
     else {
-      const devis = new Devis(info, qte, puht, tva, tht, this.item.id_devi_g, this.item.id_devis)
+      const devis = new Devis(info, qte, puht, tva, tht, this.item.id_devi_g, this.item.id_devis,)
       await this.servuceDevis.updateDevis(devis).subscribe({
         next: (data) => {
           this.activeModal.dismiss();

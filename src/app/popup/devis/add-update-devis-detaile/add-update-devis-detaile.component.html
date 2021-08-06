@@ -32,7 +32,7 @@
       <div class="col-sm-12">
         <div class="form-group">
           <label class="form-label" for="Name">Puht</label>
-          <input type="text" class="form-control" id="Name" placeholder="" name="puht" [(ngModel)]="this.model.puht" #puht="ngModel" required>
+          <input type="number" class="form-control" id="Name" placeholder="" name="puht" [(ngModel)]="this.model.puht" #puht="ngModel" required>
           <div *ngIf="(puht.invalid && puht.touched)" class="alert alert-danger" role="alert">
             Puht  invalide
           </div>
@@ -43,13 +43,13 @@
       <div class="col-sm-12">
         <div class="form-group">
           <label class="form-label" for="Phone">TVA</label>
-          <input type="text" class="form-control" id="Phone"  placeholder="" name="tva" [(ngModel)]="this.model.tva" #tva="ngModel"  required >
+          <input type="number" class="form-control" id="Phone"  placeholder="" name="tva" [(ngModel)]="this.model.tva" #tva="ngModel"  required >
           <div *ngIf="(tva.invalid && tva.touched)" class="alert alert-danger" role="alert">
             TVA  invalide
           </div>
         </div>
       </div>
-      <div class="col-sm-12">
+      <!-- <div class="col-sm-12">
         <div class="form-group">
           <label class="form-label" for="Phone">THT</label>
           <input type="text" class="form-control" id="Phone"  placeholder="" name="tht" [(ngModel)]="this.model.tht" #tht="ngModel"  required >
@@ -57,7 +57,7 @@
             TVA  invalide
           </div>
         </div>
-      </div>
+      </div> -->
 
 
 

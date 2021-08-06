@@ -20,11 +20,24 @@ export class AddUpdateContratComponent implements OnInit {
   @Input() add: any;
   @Input() item: any;
   client_list: any[] = [];
-
-
   constructor(public activeModal: NgbActiveModal, private serviceContra: ContratsService, private shredService: SheredService, private deviServ: DeviGrondService) { }
   ngOnInit(): void {
     this.getALLListClient();
+    if(this.add)
+    {
+      this.model={};
+    }
+    else{
+      this.getListDevis(this.item.id_client);
+      this.model.client=this.item.id_client;
+      this.model.id_devi=this.item.id_devi;
+      this.model.autre=this.item.autre;
+      this.model.lieu=this.item.lieu;
+      this.model.date_recp=this.item.date_recp;
+      this.model.lieu_recp=this.item.lieu_recp;
+      this.model.prix=this.item.prix;
+      this.model.avance=this.item.avance;
+    }
   }
   onChange(id_client: any) {
     this.getListDevis(id_client.value.toString());
@@ -68,10 +81,10 @@ export class AddUpdateContratComponent implements OnInit {
     })
   }
   async mangContrinte(f: any) {
-    const { autre, lieu, date_recp, lieu_recp, prix, avance, reste, id_devi } = f.value;
-    const Rest = Number(prix) - Number(avance) || "0";
+    const { autre, lieu, date_recp, lieu_recp, prix, avance, id_devi } = f.value;
+    // const Rest = Number(prix) - Number(avance) || "0";
     if (this.add) {
-      const contra = new Contrant(autre, lieu, date_recp, lieu_recp, prix, avance, Rest.toString(), "", id_devi)
+      const contra = new Contrant(autre, lieu, date_recp, lieu_recp, avance, "", id_devi)
       await this.serviceContra.addContrant(contra).subscribe({
         next: (data) => {
           const donne: any = data;
@@ -92,15 +105,19 @@ export class AddUpdateContratComponent implements OnInit {
         }
       })
     } else {
-      const c = new Contrant(autre, lieu, date_recp, lieu_recp, prix, avance, Rest.toString(), "", id_devi, this.item.id_contrat)
+      const c = new Contrant(autre, lieu, date_recp, lieu_recp, avance, "", id_devi, this.item.id_contrat)
       await this.serviceContra.updateContran(c).subscribe({
         next: (data) => {
+          this.activeModal.dismiss();
+          this.shredService.reloadComponent()
+
           swal('Success', '', 'success')
         }, error: (err) => {
+          this.activeModal.dismiss();
+          this.shredService.reloadComponent()
           swal('Error', 'Quelque Chose Ne Fonctionne Pas', 'error')
         }
       })
     }
-
   }
 }

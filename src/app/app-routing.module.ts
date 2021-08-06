@@ -20,7 +20,7 @@ const routes: Routes = [
   {path:'detaile-devis/:id_devis', component: DetaileDevisComponent},
   {path:'client/:id_client', component: ClientComponent},
 
-  {path:'view-contrat', component: ViewContratComponent},
+  {path:'view-contrat/:id/:type', component: ViewContratComponent},
 
 
 

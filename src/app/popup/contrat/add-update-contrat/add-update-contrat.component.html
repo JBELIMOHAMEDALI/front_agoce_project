@@ -11,7 +11,7 @@
       <div class="col-sm-12">
         <label class="form-label" for="Name">Client</label>
         <div class="input-group">
-          <select ngModel={{-1}} name="client" #client="ngModel" class="form-control" (change)="onChange($event.target)" required>
+          <select ngModel={{-1}} [disabled]="!this.add" name="client" [(ngModel)]="this.model.client" #client="ngModel" class="form-control" (change)="onChange($event.target)" required>
             <option disabled [value]="-1">Séléctionner un Client</option>
             <ng-container *ngFor="let item of this.client_list">
               <option [value]="item.id_client ">
@@ -57,7 +57,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-12">
         <div class="form-group">
           <label class="form-label" for="Name">Date Recption</label>
           <input class="form-control" type="date" name="date_recp" [(ngModel)]="this.model.date_recp" required
@@ -77,16 +77,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-6">
-        <div class="form-group">
-          <label class="form-label" for="Name">Prix</label>
-          <input type="number" class="form-control" id="Name" placeholder="" name="prix" [(ngModel)]="this.model.prix"
-            #prix="ngModel" required>
-          <div *ngIf="(prix.invalid && prix.touched)" class="alert alert-danger" role="alert">
-            Prix invalide
-          </div>
-        </div>
-      </div>
+
       <div class="col-sm-6">
         <div class="form-group">
           <label class="form-label" for="Name">Avance</label>

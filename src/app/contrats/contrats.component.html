@@ -55,10 +55,10 @@
                     <td>{{item.email}}</td>
                     <td>{{item.autre}}</td>
                     <td>
-                      <a  class="btn btn-success btn-sm m-r-10"><i class="feather icon-eye"></i>&nbsp;Voir </a>
-                      <a  class="btn btn-info btn-sm m-r-10"  ><i class="feather icon-edit"></i>&nbsp;Éditer </a>
+                      <a  [routerLink]="['/view-contrat', item.id_contrat ,'c' ]" class="btn btn-success btn-sm m-r-10"><i class="feather icon-eye"></i>&nbsp;Voir </a>
+                      <a  class="btn btn-info btn-sm m-r-10" (click)="this.openUpdate(item)" ><i class="feather icon-edit" ></i>&nbsp;Éditer </a>
                       <a  class="btn btn-warning btn-sm m-r-10"><i class="feather icon-printer"></i>&nbsp;Imprimer </a>
-                      <a  class="btn btn-danger btn-sm m-r-10"  ><i class="feather icon-trash-2" ></i>&nbsp;Effacer </a>
+                      <a  class="btn btn-danger btn-sm m-r-10" (click)="this.openAddDelete(item.id_contrat)"><i class="feather icon-trash-2" ></i>&nbsp;Effacer </a>
                     </td>
                   </tr>
 

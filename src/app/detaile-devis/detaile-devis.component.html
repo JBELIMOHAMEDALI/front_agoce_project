@@ -67,7 +67,9 @@
               </table>
               <br>
               <br>
-              <a style="float: right;margin-right: 30px;" class="btn btn-warning btn-sm m-r-10"><i class="feather icon-printer"></i>&nbsp;Imprimer </a>
+              <button [routerLink]="['/view-contrat', this.active_id ,'d' ]"  [disabled]="this.listDevis.length==0" style="float: right;margin-right: 30px;" type="button" class="btn btn-warning"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;Imprimer</button>
+
+              <!-- <a    class="btn btn-warning btn-sm m-r-10"><i class="feather icon-printer"></i>Imprimer </a> -->
             </div>
           </div>
         </div>

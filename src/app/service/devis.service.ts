@@ -29,6 +29,7 @@ export class DevisService {
     param1 = param1.set("puht", devis.puht);
     param1 = param1.set("tva", devis.tva);
     param1 = param1.set("tht", devis.tht);
+    param1 = param1.set("prix", devis.prix);
     param1 = param1.set("id", devis.id_devis);
     return this.httpClient.post('http://127.0.0.1/p_agonce_api/Devis/update_Devis', param1);
   }

@@ -6,6 +6,7 @@ import { SheredService } from '../service/shered.service';
 import { JsonpInterceptor } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddUpdateContratComponent } from '../popup/contrat/add-update-contrat/add-update-contrat.component';
+import { DeleteDevisComponent } from '../popup/devis/delete-devis/delete-devis.component';
 
 @Component({
   selector: 'app-contrats',
@@ -32,6 +33,7 @@ export class ContratsComponent implements OnInit {
         const error = donne.errorer;
         if (!error) {
           this.listContrint = msg;
+
         } else {
           this.listContrint = [];
         }
@@ -47,13 +49,25 @@ export class ContratsComponent implements OnInit {
     modalRef.componentInstance.title = 'Add Contrat';
     modalRef.componentInstance.add = true;
   }
+  openUpdate(item:any) {
 
-  // routerLink='/view-contrat'
+    const modalRef = this.modalService.open(AddUpdateContratComponent);
+    modalRef.componentInstance.title = 'Update Contrat';
+    modalRef.componentInstance.add = false;
+    modalRef.componentInstance.item = item;
+    console.log(JSON.stringify(item)+"----------");
 
+  }
 
+  openAddDelete(id:String)
+  {
+    const modalRef = this.modalService.open(DeleteDevisComponent);
+    modalRef.componentInstance.title = 'Supprtion  Contrat';
+    modalRef.componentInstance.nomTab = 'contrats';
+    modalRef.componentInstance.id_name = 'id_contrat';
+    modalRef.componentInstance.id =id;
 
-
-
+  }
 
   // getObject(item:any)
   // {
@@ -75,20 +89,7 @@ export class ContratsComponent implements OnInit {
   //   this.id_contrinte=item.id;
   // }
 
-  // async updateContra(fn:any)
-  // {
-  //   const {nom, soc, cin, tel, email, objet, date_travail, autre, liru, date_recp, lieu_recp, prix, avance, rest, date_paiement}=fn.value;
-  //   const c = new Contrant(nom,soc,cin,tel,email,objet,date_travail, autre, liru, date_recp, lieu_recp, prix, avance, rest, date_paiement,this.id_contrinte)
-  //  await this.contrinteSrvice.updateContran(c).subscribe({next:(data)=>{
-  //     swal('Success', '', 'success')
-  //   },error:(err)=>{
-  //     swal('Error', 'Quelque Chose Ne Fonctionne Pas', 'error')
-  //   }})
-  // }
-  // setIdClientDeleted(id:string)
-  // {
-  //   this.id_contrant_delleted=id;
-  // }
+
   // delleteContra()
   // {
   //   this.shredService.deleteFromTab(this.id_contrant_delleted,"contrats","id").subscribe({next:(data)=>{
