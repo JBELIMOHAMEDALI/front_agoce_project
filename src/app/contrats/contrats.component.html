@@ -30,36 +30,35 @@
               <div class="col-sm-6">
               </div>
               <div class="col-sm-6 text-end">
-                <button class="btn btn-success btn-sm mb-3 btn-round" data-bs-toggle="modal"
-                  data-bs-target="#modal-report"><i class="feather icon-user-plus"></i> Ajouter Contrat</button>
+                <button class="btn btn-success btn-sm mb-3 btn-round" (click)="this.open()"><i class="feather icon-user-plus"></i> Ajouter Contrat</button>
               </div>
             </div>
             <div class="table-responsive">
               <table id="report-table" class="table table-bordered table-striped mb-0" style="text-align: center;">
                 <thead>
+
+
                   <tr>
                     <th>Date</th>
                     <th>Client</th>
-                    <th>cin</th>
                     <th>Société</th>
                     <th>Email</th>
-                    <th>Téléphone</th>
+                    <th>Autre</th>
                     <th>Options</th>
                   </tr>
                 </thead>
                 <tbody *ngFor="let item of this.listContrint ">
                   <tr>
-                    <td>{{item.date_travail}}</td>
-                    <td>{{item.nom}}</td>
-                    <td>{{item.cin}}</td>
-                    <td>{{item.soc}}</td>
-                    <td>{{item.mail}}</td>
-                    <td>{{item.tel}}</td>
+                    <td>{{item.date_contrats}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.nom_soc}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.autre}}</td>
                     <td>
-                      <a routerLink='/view-contrat' class="btn btn-success btn-sm m-r-10"><i class="feather icon-eye"></i>&nbsp;Voir </a>
-                      <a href="#!" class="btn btn-info btn-sm m-r-10" data-bs-toggle="modal" data-bs-target="#modal-report1" (click)="getObject(item)"><i class="feather icon-edit"></i>&nbsp;Éditer </a>
-                      <a href="#!" class="btn btn-warning btn-sm m-r-10"><i class="feather icon-printer"></i>&nbsp;Imprimer </a>
-                      <a  class="btn btn-danger btn-sm m-r-10" data-bs-toggle="modal" data-bs-target="#modal-report2" (click)="setIdClientDeleted(item.id)"><i class="feather icon-trash-2" ></i>&nbsp;Effacer </a>
+                      <a  class="btn btn-success btn-sm m-r-10"><i class="feather icon-eye"></i>&nbsp;Voir </a>
+                      <a  class="btn btn-info btn-sm m-r-10"  ><i class="feather icon-edit"></i>&nbsp;Éditer </a>
+                      <a  class="btn btn-warning btn-sm m-r-10"><i class="feather icon-printer"></i>&nbsp;Imprimer </a>
+                      <a  class="btn btn-danger btn-sm m-r-10"  ><i class="feather icon-trash-2" ></i>&nbsp;Effacer </a>
                     </td>
                   </tr>
 
@@ -69,12 +68,10 @@
           </div>
         </div>
       </div>
-      <!-- customar project  end -->
     </div>
-    <!-- [ Main Content ] end -->
   </div>
 </div>
-<div class="modal fade" id="modal-report" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+<!-- <div class="modal fade" id="modal-report" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
   aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -232,14 +229,14 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 
 <!-- update -->
 
 
 
-<div class="modal fade" id="modal-report1" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+<!-- <div class="modal fade" id="modal-report1" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
   aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -249,7 +246,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form class="form" name="form" #fn="ngForm" (ngSubmit)="this.updateContra(fn)">
+        <form class="form" name="form" #fn="ngForm" >
 
           <div class="row">
             <div class="col-sm-6">
@@ -397,11 +394,11 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- dellete -->
 
-<div class="modal fade" id="modal-report2" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+<!-- <div class="modal fade" id="modal-report2" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
   aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -413,15 +410,15 @@
       <div class="modal-body">
           <div class="row">
               vous ete sur du supprimer cette elimont ?
-            
+
           </div>
           <br>
           <hr>
         <div class="col-sm-12">
-          <button type="submit" class="btn btn-block btn-primary" (click)="delleteContra()" >Yes</button>
+          <button type="submit" class="btn btn-block btn-primary"  >Yes</button>
           <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">No</button>
         </div>
       </div>
     </div>
   </div>
-</div>
+</div> -->

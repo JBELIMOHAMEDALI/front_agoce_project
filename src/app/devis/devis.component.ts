@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddUpdateDevisDetaileComponent } from '../popup/devis/add-update-devis-detaile/add-update-devis-detaile.component';
 import { AddUpdateDevisComponent } from '../popup/devis/add-update-devis/add-update-devis.component';
+import { DeleteDevisComponent } from '../popup/devis/delete-devis/delete-devis.component';
 import { DeviGrondService } from '../service/devi-grond.service';
 import { SheredService } from '../service/shered.service';
 
@@ -27,7 +28,7 @@ export class DevisComponent implements OnInit {
         if (!error) {
           this.listDevis = msg;
           console.log(msg);
-          
+
         } else {
           this.listDevis = [];
         }
@@ -46,8 +47,18 @@ export class DevisComponent implements OnInit {
   openAddDetaile(id:String)
   {
     const modalRef = this.modalService.open(AddUpdateDevisDetaileComponent);
-    modalRef.componentInstance.title = 'Add Devi';
+    modalRef.componentInstance.title = 'Add Detaile Devi';
     modalRef.componentInstance.add = true;
     modalRef.componentInstance.id = id;
+  }
+
+  openAddDelete(id:String)
+  {
+    const modalRef = this.modalService.open(DeleteDevisComponent);
+    modalRef.componentInstance.title = 'Supprtion  Devi';
+    modalRef.componentInstance.nomTab = 'devi';
+    modalRef.componentInstance.id_name = 'id_devi';
+    modalRef.componentInstance.id =id;
+
   }
 }

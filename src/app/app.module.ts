@@ -23,6 +23,7 @@ import { DeleteContratComponent } from './popup/contrat/delete-contrat/delete-co
 import { AddUpdateDevisComponent } from './popup/devis/add-update-devis/add-update-devis.component';
 import { DeleteDevisComponent } from './popup/devis/delete-devis/delete-devis.component';
 import { AddUpdateDevisDetaileComponent } from './popup/devis/add-update-devis-detaile/add-update-devis-detaile.component';
+import { DetaileDevisComponent } from './detaile-devis/detaile-devis.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AddUpdateDevisDetaileComponent } from './popup/devis/add-update-devis-d
     DeleteContratComponent,
     AddUpdateDevisComponent,
     DeleteDevisComponent,
-    AddUpdateDevisDetaileComponent
+    AddUpdateDevisDetaileComponent,
+    DetaileDevisComponent
   ],
   imports: [
     BrowserModule,

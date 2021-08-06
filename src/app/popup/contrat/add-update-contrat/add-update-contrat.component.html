@@ -1,12 +1,109 @@
 <div class="modal-header">
-    <h4 class="modal-title">{{title}}</h4>
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <!-- my body -->
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
-  </div>
+  <h4 class="modal-title">{{title}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form class="form" name="form" #f="ngForm" (ngSubmit)="this.mangContrinte(f)">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <label class="form-label" for="Name">Client</label>
+        <div class="input-group">
+          <select ngModel={{-1}} name="client" #client="ngModel" class="form-control" (change)="onChange($event.target)" required>
+            <option disabled [value]="-1">Séléctionner un Client</option>
+            <ng-container *ngFor="let item of this.client_list">
+              <option [value]="item.id_client ">
+                {{item.nom_soc+"**"+item.name }}
+                </option>
+            </ng-container>
+          </select>
+        </div>
+        <br>
+      </div>
+      <div class="col-sm-12">
+        <label class="form-label" for="Name">Devis </label>
+        <div class="input-group">
+          <select ngModel={{-1}} name="id_devi" [(ngModel)]="this.model.id_devi" #id_devi="ngModel" class="form-control"
+            required>
+            <option disabled [value]="-1">Séléctionner un Devis</option>
+            <ng-container *ngFor="let item of this.listDevis">
+              <option [value]="item.id_devi">
+                {{"Devi ref : "+item.id_devi }}
+              </option>
+            </ng-container>
+          </select>
+        </div>
+        <br>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="form-label" for="Name">Autre</label>
+          <input type="text" class="form-control" id="Name" placeholder="" name="autre" [(ngModel)]="this.model.autre"
+            #autre="ngModel" required>
+          <div *ngIf="(autre.invalid && autre.touched)" class="alert alert-danger" role="alert">
+            Autre invalide
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="form-label" for="Name">Lieu</label>
+          <input type="text" class="form-control" id="Name" placeholder="" name="lieu" [(ngModel)]="this.model.lieu"
+            #lieu="ngModel" required>
+          <div *ngIf="(lieu.invalid && lieu.touched)" class="alert alert-danger" role="alert">
+            Lieu invalide
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="form-label" for="Name">Date Recption</label>
+          <input class="form-control" type="date" name="date_recp" [(ngModel)]="this.model.date_recp" required
+            #date_recp="ngModel" />
+          <div *ngIf="(date_recp.invalid && date_recp.touched)" class="alert alert-danger" role="alert">
+            Date Recption invalide
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="form-label" for="Name">Lieu Recption</label>
+          <input type="text" class="form-control" id="Name" placeholder="" name="lieu_recp"
+            [(ngModel)]="this.model.lieu_recp" #lieu_recp="ngModel" required>
+          <div *ngIf="(lieu_recp.invalid && lieu_recp.touched)" class="alert alert-danger" role="alert">
+            Lieu Recption invalide
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="form-label" for="Name">Prix</label>
+          <input type="number" class="form-control" id="Name" placeholder="" name="prix" [(ngModel)]="this.model.prix"
+            #prix="ngModel" required>
+          <div *ngIf="(prix.invalid && prix.touched)" class="alert alert-danger" role="alert">
+            Prix invalide
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="form-label" for="Name">Avance</label>
+          <input type="number" class="form-control" id="Name" placeholder="" name="avance"
+            [(ngModel)]="this.model.avance" #avance="ngModel" required>
+          <div *ngIf="(avance.invalid && avance.touched)" class="alert alert-danger" role="alert">
+            Avance invalide
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <button *ngIf="this.add" type="submit" class="btn btn-block btn-primary" [disabled]="f.invalid">ADD</button>
+      <button *ngIf="!this.add" type="submit" class="btn btn-block btn-primary" [disabled]="f.invalid">Update</button>
+
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    </div>
+  </form>
+</div>
