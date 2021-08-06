@@ -95,18 +95,19 @@
                               <th>Description</th>
                               <th>Quantity</th>
                               <th>Amount</th>
+                              <th>TVA</th>
                               <th>Total</th>
                             </tr>
                           </thead>
-                          <tbody>
+                          <tbody *ngFor="let item of this.listData " >
                             <tr>
                               <td>
-                                <h6>Logo Design</h6>
-                                <p class="m-0">lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                <h6>{{item.info}}</h6>
                               </td>
-                              <td>6</td>
-                              <td>$200.00</td>
-                              <td>$1200.00</td>
+                              <td>{{item.qte}}</td>
+                              <td>{{item.puht+ " DT"}}</td>
+                              <td>{{item.tva+ " %"}}</td>
+                              <td>{{item.tht+ " DT"}}</td>
                             </tr>
                           </tbody>
                         </table>
@@ -117,18 +118,18 @@
                     <div class="col-sm-12">
                       <table class="table table-responsive invoice-table invoice-total">
                         <tbody>
-                          <tr>
+                          <!-- <tr>
                             <th>Sub Total :</th>
-                            <td>$4725.00</td>
-                          </tr>
-                          <tr>
+                            <td>$4725.00</td> -->
+                          <!-- </tr> -->
+                          <!-- <tr>
                             <th>Taxes (10%) :</th>
                             <td>$57.00</td>
                           </tr>
                           <tr>
                             <th>Discount (5%) :</th>
                             <td>$45.00</td>
-                          </tr>
+                          </tr> -->
                           <tr>
                             <td>
                               <hr />
@@ -136,7 +137,27 @@
                             </td>
                             <td>
                               <hr />
-                              <h5 class="text-primary">$ 4827.00</h5>
+                              <h5 class="text-primary">{{this.prixtotContra+ " DT"}}</h5>
+                            </td>
+                          </tr>
+                          <tr *ngIf="this.type == 'c'">
+                            <td>
+                              <hr />
+                              <h5 class="text-primary m-r-10">Avnce :</h5>
+                            </td>
+                            <td>
+                              <hr />
+                              <h5 class="text-primary">{{this.avonce +" DT"}}</h5>
+                            </td>
+                          </tr>
+                          <tr *ngIf="this.type == 'c'">
+                            <td>
+                              <hr />
+                              <h5 class="text-primary m-r-10">Rest :</h5>
+                            </td>
+                            <td>
+                              <hr />
+                              <h5 class="text-primary">{{this.prixtotContra-this.avonce +" DT"}}</h5>
                             </td>
                           </tr>
                         </tbody>

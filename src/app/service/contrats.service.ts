@@ -38,5 +38,17 @@ export class ContratsService {
     param1 = param1.set("id", id);
     return this.httpClient.get("http://127.0.0.1/p_agonce_api/Contrats/get_all_Contrant_by_client",{params:param1});
   }
-  //
+  ///
+
+  getAllContrantDetaile(id:string) {
+    let param1 = new HttpParams;
+    param1 = param1.set("id", id);
+    return this.httpClient.get("http://127.0.0.1/p_agonce_api/Contrats/get_all_Contrant_Detaile",{params:param1});
+  }
+
+  getAllContrantTotale_Prix(id:string) {
+    let param1 = new HttpParams;
+    param1 = param1.set("id", id);
+    return this.httpClient.get("http://127.0.0.1/p_agonce_api/Contrats/get_all_Contrant_totale_Prix",{params:param1});
+  }
 }

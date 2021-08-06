@@ -28,4 +28,20 @@ export class DeviGrondService {
     param1 = param1.set("id",id);
     return this.httpClient.get("http://127.0.0.1/p_agonce_api/Devi/get_Devi_bay_client",{params:param1});
   }
+
+
+
+  getDvisDetaile_Print(id:string) {
+    let param1 = new HttpParams;
+    param1 = param1.set("id",id);
+    return this.httpClient.get("http://127.0.0.1/p_agonce_api/Devi/get_Devi_Detaile_Print",{params:param1});
+  }
+
+  getDvisTot_prix(id:string) {
+    let param1 = new HttpParams;
+    param1 = param1.set("id",id);
+    return this.httpClient.get("http://127.0.0.1/p_agonce_api/Devi/get_Devi_tt_prix",{params:param1});
+  }
+  ////
+
 }

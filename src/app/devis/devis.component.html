@@ -52,7 +52,7 @@
                     <td>
                       <a [routerLink]="['/detaile-devis', item.id_devi]" class="btn btn-success btn-sm m-r-10"><i class="feather icon-eye"></i>&nbsp;Voir </a>
                         <a  class="btn btn-info btn-sm m-r-10" (click)="openAddDetaile(item.id_devi)"><i class="feather icon-edit" ></i>&nbsp;Add item  </a>
-                        <a  class="btn btn-warning btn-sm m-r-10"><i class="feather icon-printer"></i>&nbsp;Imprimer </a>
+                        <a [routerLink]="['/view-contrat', item.id_devi ,'d' ]" class="btn btn-warning btn-sm m-r-10" ><i class="feather icon-printer"></i>&nbsp;Imprimer </a>
                         <a  class="btn btn-danger btn-sm m-r-10" (click)="openAddDelete(item.id_devi)"><i class="feather icon-trash-2" ></i>&nbsp;Effacer </a>
                     </td>
                   </tr>
